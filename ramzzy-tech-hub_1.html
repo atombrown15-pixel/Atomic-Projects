@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAMZZY TECH HUB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B0B0C;
+    --surface: #141416;
+    --surface-2: #1B1B1E;
+    --gold: #CBA35C;
+    --gold-soft: #E4C98A;
+    --gold-dim: #8A703C;
+    --ink: #F3F1EA;
+    --ink-soft: #A8A6A0;
+    --line: #2A2A2C;
+    --line-gold: rgba(203,163,92,0.35);
+    --danger: #B3432E;
+    --emerald: #3C6E58;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-size:11px;letter-spacing:3px;text-transform:uppercase;
+    color:var(--gold);font-weight:500;
+  }
+
+  /* header */
+  header{
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .header-inner{
+    display:flex;align-items:center;gap:16px;justify-content:space-between;
+    padding:22px 28px;
+    max-width:1100px;margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:14px;}
+  .monogram{
+    width:44px;height:44px;border-radius:50%;
+    border:1px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;
+    font-size:16px;letter-spacing:1px;color:var(--gold);
+    flex-shrink:0;
+  }
+  .brand h1{
+    color:var(--ink);font-size:24px;letter-spacing:1.5px;
+    text-transform:uppercase;font-weight:500;
+  }
+  .header-line{font-size:11px;color:var(--ink-soft);letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
+
+  /* hero */
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 400px at 80% -10%, rgba(203,163,92,0.10), transparent 60%),
+      var(--bg);
+    padding:72px 0 64px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-edit{max-width:640px;}
+  .hero h2{
+    color:var(--ink);font-size:44px;line-height:1.12;font-style:italic;
+    margin-top:10px;
+  }
+  .hero p{color:var(--ink-soft);margin-top:16px;font-size:15px;max-width:480px;letter-spacing:0.2px;}
+  .hero-rule{width:64px;height:1px;background:var(--gold);margin-top:26px;}
+
+  main{padding:56px 0 90px;}
+  section.block{margin-bottom:64px;}
+  .section-head{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    margin-bottom:28px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+  }
+  .section-head h2{font-size:26px;font-style:italic;}
+  .section-head .count{font-size:11px;color:var(--ink-soft);letter-spacing:2px;text-transform:uppercase;}
+
+  /* product grid */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .card{
+    background:var(--surface);
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    position:relative;
+    transition:box-shadow 0.25s ease;
+  }
+  .card:hover{
+    box-shadow: inset 0 0 0 1px var(--gold);
+  }
+  .card .refno{
+    position:absolute;top:14px;left:14px;
+    color:var(--gold-soft);
+    font-size:10px;letter-spacing:2px;
+    font-weight:500;z-index:2;
+    text-transform:uppercase;
+  }
+  .card .imgwrap{
+    background:var(--surface-2);
+    height:340px;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .card img{
+    width:100%;height:100%;object-fit:contain;
+    display:block;
+    filter:saturate(0.92) contrast(1.03);
+    transition:opacity 0.4s ease;
+  }
+  .card .body{padding:20px 20px 22px;flex:1;display:flex;flex-direction:column;gap:8px;}
+  .card h3{font-size:19px;letter-spacing:0.3px;}
+  .card .desc{font-size:12.5px;color:var(--ink-soft);flex:1;letter-spacing:0.2px;}
+  .card .price{
+    font-size:18px;font-weight:500;color:var(--gold-soft);
+    font-family:'Cormorant Garamond',serif;letter-spacing:0.5px;
+    padding-top:6px;border-top:1px solid var(--line);margin-top:4px;
+  }
+  .card .remove-btn{
+    position:absolute;top:12px;right:12px;z-index:2;
+    background:var(--danger);color:#fff;border:none;
+    width:24px;height:24px;border-radius:50%;
+    font-size:13px;cursor:pointer;line-height:1;
+  }
+
+  /* editable fields */
+  .editable{
+    border:1px dashed transparent;
+    border-radius:2px;
+    padding:2px 4px;
+    margin:-2px -4px;
+  }
+  .owner-on .editable{border-color:var(--gold-dim);cursor:text;}
+  .owner-on .editable:focus{outline:1px solid var(--gold);background:rgba(203,163,92,0.08);}
+
+  /* store info footer */
+  footer{
+    background:var(--surface);
+    color:var(--ink-soft);
+    padding:48px 0 34px;
+    border-top:1px solid var(--line);
+  }
+  .info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:28px;
+    margin-bottom:32px;
+  }
+  .info-item .label{font-size:10px;text-transform:uppercase;letter-spacing:2.5px;color:var(--gold);margin-bottom:8px;}
+  .info-item .value{font-size:15px;color:var(--ink);letter-spacing:0.3px;}
+  footer .fineprint{font-size:11.5px;color:#5F5D58;border-top:1px solid var(--line);padding-top:20px;letter-spacing:0.3px;}
+
+  /* buttons */
+  button{
+    font-family:'Space Grotesk',sans-serif;
+    cursor:pointer;
+  }
+  .btn{
+    background:var(--gold);color:#141416;border:none;
+    padding:11px 22px;border-radius:2px;font-size:12.5px;font-weight:500;
+    letter-spacing:1px;text-transform:uppercase;
+  }
+  .btn:hover{background:var(--gold-soft);}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line-gold);}
+  .btn.ghost:hover{background:rgba(203,163,92,0.08);}
+  .btn.small{padding:7px 14px;font-size:11px;}
+
+  .add-card{
+    background:var(--surface);
+    border:1px dashed var(--line-gold);
+    display:flex;align-items:center;justify-content:center;
+    min-height:240px;
+    color:var(--ink-soft);
+    font-size:13px;
+  }
+  .add-card button{background:none;border:none;color:var(--gold-soft);font-weight:500;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+
+  /* owner bar */
+  .owner-bar{
+    position:sticky;top:0;z-index:50;
+    background:var(--gold);
+    color:#141416;
+    font-size:12.5px;font-weight:500;
+    display:none;
+    align-items:center;justify-content:space-between;
+    padding:9px 28px;
+    letter-spacing:0.3px;
+  }
+  .owner-on .owner-bar{display:flex;}
+  .owner-bar .right{display:flex;gap:10px;align-items:center;}
+  .save-msg{font-size:11.5px;color:#141416;opacity:0;transition:opacity 0.2s;letter-spacing:1px;text-transform:uppercase;}
+  .save-msg.show{opacity:1;}
+
+  /* owner toggle corner */
+  .fallback-banner{
+    display:none;
+    background:#3A2E14;color:#E4C98A;
+    font-size:12.5px;text-align:center;
+    padding:9px 20px;letter-spacing:0.2px;
+  }
+  .fallback-banner button{
+    background:none;border:1px solid var(--gold-dim);color:var(--gold-soft);
+    font-size:11px;padding:3px 10px;border-radius:2px;margin-left:10px;cursor:pointer;
+  }
+  .owner-toggle{
+    position:fixed;bottom:22px;right:22px;z-index:60;
+    background:var(--surface);color:var(--gold);
+    border:1px solid var(--gold);width:46px;height:46px;border-radius:50%;
+    font-size:18px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.4);
+  }
+  .owner-on .owner-toggle{background:var(--danger);color:#fff;border-color:var(--danger);}
+
+  /* modal */
+  .modal-overlay{
+    display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);
+    align-items:center;justify-content:center;z-index:100;padding:20px;
+  }
+  .modal-overlay.show{display:flex;}
+  .modal{
+    background:var(--surface);border:1px solid var(--line-gold);border-radius:4px;padding:30px;max-width:360px;width:100%;
+  }
+  .modal h3{font-size:21px;margin-bottom:8px;font-style:italic;}
+  .modal p{font-size:12.5px;color:var(--ink-soft);margin:0 0 18px;letter-spacing:0.2px;}
+  .modal input{
+    width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:2px;
+    font-size:14px;margin-bottom:11px;font-family:inherit;
+    background:var(--surface-2);color:var(--ink);
+  }
+  .modal input::placeholder{color:#6B6963;}
+  .modal .err{color:#E27A63;font-size:12px;margin:-4px 0 10px;display:none;}
+  .modal .row{display:flex;gap:10px;justify-content:flex-end;margin-top:8px;}
+  .upload-label{display:block;margin-bottom:11px;}
+  .upload-box{
+    border:1px dashed var(--line-gold);border-radius:2px;
+    min-height:220px;display:flex;align-items:center;justify-content:center;
+    background:var(--surface-2);cursor:pointer;overflow:hidden;position:relative;
+  }
+  .upload-box:hover{border-color:var(--gold);}
+  .upload-box span{font-size:12.5px;color:var(--ink-soft);letter-spacing:0.3px;}
+  .upload-box img{width:100%;height:260px;object-fit:cover;display:block;}
+  .upload-box.small{min-height:64px;width:64px;flex-shrink:0;}
+  .upload-box.small span{font-size:10.5px;text-align:center;padding:0 4px;}
+  .upload-note{font-size:11px;color:#6B6963;margin:-6px 0 12px;}
+  .thumb-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:11px;}
+  .thumb-row .upload-label{margin-bottom:0;}
+  .thumb{
+    position:relative;width:64px;height:64px;border-radius:2px;overflow:hidden;
+    border:1px solid var(--line);flex-shrink:0;
+  }
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .thumb .thumb-remove{
+    position:absolute;top:2px;right:2px;
+    background:rgba(11,11,12,0.75);color:#fff;border:none;
+    width:18px;height:18px;border-radius:50%;font-size:11px;line-height:1;cursor:pointer;
+  }
+  .card .dots{
+    position:absolute;bottom:10px;left:0;right:0;
+    display:flex;justify-content:center;gap:5px;z-index:2;
+  }
+  .card .dot{
+    width:6px;height:6px;border-radius:50%;
+    background:rgba(243,241,234,0.4);border:none;padding:0;cursor:pointer;
+  }
+  .card .dot.active{background:var(--gold-soft);}
+  .card .imgwrap{position:relative;}
+  .card .arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    background:rgba(11,11,12,0.55);color:#fff;border:none;
+    width:26px;height:26px;border-radius:50%;font-size:14px;cursor:pointer;z-index:2;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .card .arrow.left{left:8px;}
+  .card .arrow.right{right:8px;}
+  .card .imgwrap img{cursor:zoom-in;}
+
+  .lightbox-overlay{
+    display:none;position:fixed;inset:0;z-index:200;
+    background:rgba(6,6,7,0.94);
+    align-items:center;justify-content:center;
+    padding:40px;
+  }
+  .lightbox-overlay.show{display:flex;}
+  .lightbox-img{
+    max-width:min(880px, 90vw);max-height:80vh;
+    object-fit:contain;border:1px solid var(--line-gold);
+  }
+  .lightbox-close{
+    position:absolute;top:22px;right:26px;
+    background:transparent;border:1px solid var(--line-gold);color:var(--ink);
+    width:38px;height:38px;border-radius:50%;font-size:20px;line-height:1;
+  }
+  .lightbox-close:hover{border-color:var(--gold);color:var(--gold-soft);}
+  .lightbox-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    background:transparent;border:1px solid var(--line-gold);color:var(--ink);
+    width:44px;height:44px;border-radius:50%;font-size:22px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .lightbox-arrow:hover{border-color:var(--gold);color:var(--gold-soft);}
+  .lightbox-arrow.left{left:24px;}
+  .lightbox-arrow.right{right:24px;}
+  .lightbox-count{
+    position:absolute;bottom:26px;left:0;right:0;text-align:center;
+    font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-soft);
+  }
+  @media (max-width:600px){
+    .lightbox-overlay{padding:16px;}
+    .lightbox-arrow{width:38px;height:38px;font-size:18px;}
+    .lightbox-arrow.left{left:8px;}
+    .lightbox-arrow.right{right:8px;}
+    .lightbox-close{top:12px;right:12px;}
+  }
+
+  .loading-note{padding:70px 24px;text-align:center;color:var(--ink-soft);font-size:14px;grid-column:1/-1;background:var(--surface);}
+
+  @media (max-width:600px){
+    .hero h2{font-size:32px;}
+    .header-inner{padding:18px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<div id="ownerRoot">
+
+<div class="owner-bar">
+  <span>Owner mode — click any dashed field to edit, then save.</span>
+  <div class="right">
+    <span class="save-msg" id="saveMsg">Saved</span>
+    <span class="save-msg show" id="saveErr" style="display:none;color:#E27A63;">Couldn't save — check connection</span>
+    <button class="btn small" id="saveBtn">Save changes</button>
+    <button class="btn small ghost" id="logoutBtn">Log out</button>
+  </div>
+</div>
+
+<div class="fallback-banner" id="fallbackBanner">
+  This store isn't connected to a shared database yet — changes only save on this device. <button id="dismissFallback">Dismiss</button>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="monogram">RTH</div>
+      <div>
+        <h1 class="editable" id="storeName" contenteditable="false"></h1>
+        <div class="header-line">Phones · Laptops · Curated Tech</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-edit">
+    <div class="eyebrow">The new arrivals</div>
+    <h2 class="editable" id="heroLine" contenteditable="false">Devices worth carrying</h2>
+    <p class="editable" id="tagline" contenteditable="false"></p>
+    <div class="hero-rule"></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="block">
+    <div class="section-head">
+      <h2>The collection</h2>
+      <span class="count" id="prodCount"></span>
+    </div>
+    <div class="grid" id="productGrid">
+      <div class="loading-note">Loading store…</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="label">Phone</div>
+        <div class="value editable" id="phoneVal" contenteditable="false"></div>
+      </div>
+      <div class="info-item">
+        <div class="label">Payment account</div>
+        <div class="value editable" id="acctVal" contenteditable="false"></div>
+      </div>
+      <div class="info-item">
+        <div class="label">Location</div>
+        <div class="value editable" id="locVal" contenteditable="false"></div>
+      </div>
+    </div>
+    <div class="fineprint">This is a demo storefront. Owner edits are saved to shared storage and visible to everyone who opens this page.</div>
+  </div>
+</footer>
+
+<button class="owner-toggle" id="ownerToggleBtn" title="Store owner" aria-label="Store owner login">&#128274;</button>
+
+</div>
+
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <h3>Owner login</h3>
+    <p>Enter the owner passcode to edit this store.</p>
+    <input type="password" id="passInput" placeholder="Enter passcode">
+    <div class="err" id="passErr">That passcode isn't right. Try again.</div>
+    <div class="row">
+      <button class="btn ghost" id="cancelLogin">Cancel</button>
+      <button class="btn" id="submitLogin">Log in</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="addModal">
+  <div class="modal">
+    <h3>Add a product</h3>
+    <p>Add as many photos as you like.</p>
+    <input type="text" id="newName" placeholder="Product name">
+    <input type="text" id="newPrice" placeholder="Price, e.g. $1,299.00">
+    <div class="thumb-row" id="newThumbRow"></div>
+    <label class="upload-label" for="newImgFile">
+      <div class="upload-box small" id="newImgBox">
+        <span id="newImgBoxText">+ Add photos</span>
+      </div>
+    </label>
+    <input type="file" id="newImgFile" accept="image/*" multiple style="display:none;">
+    <input type="text" id="newDesc" placeholder="Short description">
+    <div class="err" id="addErr">Give it a name and price first.</div>
+    <div class="row">
+      <button class="btn ghost" id="cancelAdd">Cancel</button>
+      <button class="btn" id="submitAdd">Add product</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="imgModal">
+  <div class="modal">
+    <h3>Manage photos</h3>
+    <p id="imgModalName">Add, remove, or reorder photos for this product.</p>
+    <div class="thumb-row" id="editThumbRow"></div>
+    <label class="upload-label" for="imgFileInput">
+      <div class="upload-box small" id="imgBox">
+        <span id="imgBoxText">+ Add photos</span>
+      </div>
+    </label>
+    <input type="file" id="imgFileInput" accept="image/*" multiple style="display:none;">
+    <div class="row">
+      <button class="btn ghost" id="cancelImg">Cancel</button>
+      <button class="btn" id="submitImg">Save photos</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="removeModal">
+  <div class="modal">
+    <h3>Remove product</h3>
+    <p id="removeModalName">Remove this product from the collection?</p>
+    <div class="row">
+      <button class="btn ghost" id="cancelRemove">Cancel</button>
+      <button class="btn" id="confirmRemove" style="background:var(--danger);color:#fff;">Remove</button>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <button class="lightbox-arrow left" id="lightboxPrev" aria-label="Previous photo">&#8249;</button>
+  <img class="lightbox-img" id="lightboxImg">
+  <button class="lightbox-arrow right" id="lightboxNext" aria-label="Next photo">&#8250;</button>
+  <div class="lightbox-count" id="lightboxCount"></div>
+</div>
+
+<script>
+const STORAGE_KEY = 'ramzzy-tech-hub-v1';
+const ADMIN_PASSCODE = 'ramzzy2026';
+const PLACEHOLDER_IMG = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#1B1B1E"/>
+  <circle cx="200" cy="165" r="34" fill="none" stroke="#8A703C" stroke-width="1.5"/>
+  <text x="200" y="174" font-family="Georgia, serif" font-size="24" fill="#CBA35C" text-anchor="middle">RTH</text>
+  <text x="200" y="240" font-family="sans-serif" font-size="13" letter-spacing="2" fill="#6B6963" text-anchor="middle">PHOTO UNAVAILABLE</text>
+</svg>`);
+
+/*
+  STORAGE SETUP — read this before hosting the site live.
+
+  This site needs somewhere to save owner edits (products, photos, contact info)
+  so every visitor sees the same live version. Fill in FIREBASE_URL below with
+  your own free Firebase Realtime Database URL to make that work anywhere you host
+  this file.
+
+  1. Go to https://console.firebase.google.com and create a free project.
+  2. In the left menu, open "Build" -> "Realtime Database" -> "Create database".
+     Choose any region, and start in "test mode" (you can lock it down later).
+  3. Copy the database URL shown at the top of that page. It looks like:
+     https://YOUR-PROJECT-default-rtdb.firebaseio.com
+  4. Paste it below between the quotes, keeping no trailing slash.
+
+  Until you do this, the site still works, but each device/browser saves its
+  own separate copy (via localStorage) instead of one shared live version —
+  fine for testing, not fine for a real store with real customers.
+*/
+const FIREBASE_URL = 'https://ramzzy-tech-hub-default-rtdb.firebaseio.com'; // e.g. 'https://ramzzy-tech-hub-default-rtdb.firebaseio.com'
+
+const DEFAULT_DATA = {
+  storeName: 'Ramzzy Tech Hub',
+  tagline: 'Flagship smartphones and laptops, hand-checked and boxed with care. Every device in our collection is graded before it reaches you.',
+  phone: '(555) 042-7719',
+  account: 'Bank Transfer — Acct #4471 0092 331',
+  location: '22 Adeyemi Plaza, Lagos',
+  products: [
+    { id: 'p1', name: 'Aurora X12 Smartphone', price: '$1,299.00', images: ['https://images.unsplash.com/photo-1592286927505-1def25115558?w=1000&q=80&auto=format&fit=crop'], desc: '256GB · Titanium Black · Sealed box' },
+    { id: 'p2', name: 'Lumen Fold Smartphone', price: '$1,899.00', images: ['https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=1000&q=80&auto=format&fit=crop'], desc: '512GB · Rose Gold · Foldable display' },
+    { id: 'p3', name: 'Nova Ultrabook 14"', price: '$2,450.00', images: ['https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=80&auto=format&fit=crop'], desc: '16GB RAM · 512GB SSD · Silver' },
+    { id: 'p4', name: 'Zenith Pro Laptop 16"', price: '$2,899.00', images: ['https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1000&q=80&auto=format&fit=crop'], desc: '32GB RAM · 1TB SSD · Graphite' }
+  ]
+};
+
+function migrateProduct(p) {
+  if (!p.images) {
+    p.images = p.img ? [p.img] : [];
+    delete p.img;
+  }
+  if (p._activeIdx === undefined) p._activeIdx = 0;
+  return p;
+}
+
+let state = null;
+let isOwner = false;
+let usingFallbackStorage = false;
+
+const el = (id) => document.getElementById(id);
+const root = el('ownerRoot');
+
+/* Storage backend: Firebase if configured, else browser storage (device-only) as a safe fallback. */
+async function remoteGet() {
+  if (FIREBASE_URL) {
+    const res = await fetch(FIREBASE_URL + '/' + STORAGE_KEY + '.json');
+    if (!res.ok) throw new Error('fetch failed: ' + res.status);
+    const data = await res.json();
+    if (data && '_writeKey' in data) delete data._writeKey;
+    return data;
+  }
+  usingFallbackStorage = true;
+  const raw = window.localStorage.getItem(STORAGE_KEY);
+  return raw ? JSON.parse(raw) : null;
+}
+
+async function remoteSet(data) {
+  if (FIREBASE_URL) {
+    const res = await fetch(FIREBASE_URL + '/' + STORAGE_KEY + '.json', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...data, _writeKey: ADMIN_PASSCODE })
+    });
+    if (!res.ok) throw new Error('save failed: ' + res.status);
+    return true;
+  }
+  usingFallbackStorage = true;
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  return true;
+}
+
+async function loadData() {
+  try {
+    const result = await remoteGet();
+    state = result || structuredClone(DEFAULT_DATA);
+    if (!result) await remoteSet(state);
+  } catch (e) {
+    state = structuredClone(DEFAULT_DATA);
+  }
+  state.products.forEach(migrateProduct);
+  if (usingFallbackStorage) showFallbackNotice();
+  render();
+}
+
+async function persist(showMsg) {
+  try {
+    const toSave = structuredClone(state);
+    toSave.products.forEach(p => { delete p._activeIdx; });
+    await remoteSet(toSave);
+    if (showMsg) flashSaved();
+  } catch (e) {
+    el('saveErr').style.display = 'inline';
+    setTimeout(() => { el('saveErr').style.display = 'none'; }, 3000);
+  }
+}
+
+function flashSaved() {
+  const msg = el('saveMsg');
+  msg.textContent = 'Saved';
+  msg.classList.add('show');
+  setTimeout(() => msg.classList.remove('show'), 1500);
+}
+
+function escapeHTML(str) {
+  const div = document.createElement('div');
+  div.textContent = str == null ? '' : String(str);
+  return div.innerHTML;
+}
+
+function render() {
+  el('storeName').textContent = state.storeName;
+  el('tagline').textContent = state.tagline;
+  el('phoneVal').textContent = state.phone;
+  el('acctVal').textContent = state.account;
+  el('locVal').textContent = state.location;
+  document.title = state.storeName;
+
+  const grid = el('productGrid');
+  grid.innerHTML = '';
+  state.products.forEach((p, idx) => {
+    if (p._activeIdx === undefined) p._activeIdx = 0;
+    const imgs = (p.images && p.images.length) ? p.images : [PLACEHOLDER_IMG];
+    const activeIdx = Math.min(p._activeIdx, imgs.length - 1);
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.setAttribute('data-card-id', p.id);
+    card.innerHTML = `
+      <div class="refno">Ref. ${String(idx + 1).padStart(3, '0')}</div>
+      ${isOwner ? `<button class="remove-btn" data-id="${p.id}" aria-label="Remove product" title="Remove">&times;</button>` : ''}
+      <div class="imgwrap">
+        <img src="${imgs[activeIdx]}" alt="${escapeHTML(p.name)}" onerror="this.onerror=null;this.src='${PLACEHOLDER_IMG}'" onclick="openLightbox('${p.id}', ${activeIdx})">
+        ${imgs.length > 1 ? `
+          <button class="arrow left" data-carousel="${p.id}" data-dir="-1" aria-label="Previous photo">&#8249;</button>
+          <button class="arrow right" data-carousel="${p.id}" data-dir="1" aria-label="Next photo">&#8250;</button>
+          <div class="dots">
+            ${imgs.map((_, i) => `<button class="dot${i === activeIdx ? ' active' : ''}" data-carousel-dot="${p.id}" data-idx="${i}" aria-label="Photo ${i + 1}"></button>`).join('')}
+          </div>
+        ` : ''}
+      </div>
+      <div class="body">
+        <h3 class="editable" data-field="name" data-id="${p.id}" contenteditable="false">${escapeHTML(p.name)}</h3>
+        <div class="desc editable" data-field="desc" data-id="${p.id}" contenteditable="false">${escapeHTML(p.desc)}</div>
+        <div class="price editable" data-field="price" data-id="${p.id}" contenteditable="false">${escapeHTML(p.price)}</div>
+        ${isOwner ? `<button class="btn small ghost" data-img-edit="${p.id}" style="margin-top:6px;">Manage photos (${imgs.length})</button>` : ''}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  if (isOwner) {
+    const addCard = document.createElement('div');
+    addCard.className = 'add-card';
+    addCard.innerHTML = `<button id="openAddModal">+ Add product</button>`;
+    grid.appendChild(addCard);
+  }
+
+  el('prodCount').textContent = state.products.length + (state.products.length === 1 ? ' item' : ' items');
+
+  attachEditableHandlers();
+  attachGridHandlers();
+  setupAutoSwipe();
+}
+
+function showFallbackNotice() {
+  const banner = el('fallbackBanner');
+  if (banner) banner.style.display = 'block';
+}
+el('dismissFallback').onclick = () => { el('fallbackBanner').style.display = 'none'; };
+
+function attachEditableHandlers() {
+  document.querySelectorAll('.editable').forEach(node => {
+    node.setAttribute('contenteditable', isOwner ? 'true' : 'false');
+    node.oninput = null;
+    if (!isOwner) return;
+    node.oninput = () => {
+      const field = node.getAttribute('data-field');
+      const id = node.getAttribute('data-id');
+      if (id) {
+        const prod = state.products.find(p => p.id === id);
+        if (prod) prod[field] = node.textContent;
+      } else if (node.id === 'storeName') {
+        state.storeName = node.textContent;
+      } else if (node.id === 'tagline') {
+        state.tagline = node.textContent;
+      } else if (node.id === 'phoneVal') {
+        state.phone = node.textContent;
+      } else if (node.id === 'acctVal') {
+        state.account = node.textContent;
+      } else if (node.id === 'locVal') {
+        state.location = node.textContent;
+      }
+    };
+  });
+}
+
+let pendingRemoveId = null;
+let pendingImgId = null;
+let workingImages = [];
+let workingNewImages = [];
+
+function resizeImageFile(file, maxWidth, quality) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('read failed'));
+    reader.onload = () => {
+      const img = new Image();
+      img.onerror = () => reject(new Error('image decode failed'));
+      img.onload = () => {
+        const scale = Math.min(1, maxWidth / img.width);
+        const w = Math.round(img.width * scale);
+        const h = Math.round(img.height * scale);
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function renderThumbRow(rowId, images, onRemove) {
+  const row = el(rowId);
+  row.innerHTML = images.map((src, i) => `
+    <div class="thumb">
+      <img src="${src}">
+      <button class="thumb-remove" data-thumb-idx="${i}" aria-label="Remove photo">&times;</button>
+    </div>
+  `).join('');
+  row.querySelectorAll('[data-thumb-idx]').forEach(btn => {
+    btn.onclick = () => onRemove(parseInt(btn.getAttribute('data-thumb-idx'), 10));
+  });
+}
+
+let autoSwipeTimers = {};
+const AUTO_SWIPE_MS = 3200;
+
+function clearAutoSwipeTimers() {
+  Object.values(autoSwipeTimers).forEach(id => clearInterval(id));
+  autoSwipeTimers = {};
+}
+
+function startAutoSwipe(productId) {
+  clearInterval(autoSwipeTimers[productId]);
+  autoSwipeTimers[productId] = setInterval(() => advanceCardImage(productId), AUTO_SWIPE_MS);
+}
+
+function setupAutoSwipe() {
+  clearAutoSwipeTimers();
+  state.products.forEach(p => {
+    const imgs = (p.images && p.images.length) ? p.images : [];
+    if (imgs.length > 1) startAutoSwipe(p.id);
+  });
+}
+
+function advanceCardImage(productId) {
+  const prod = state.products.find(p => p.id === productId);
+  if (!prod) return;
+  const imgs = (prod.images && prod.images.length) ? prod.images : [PLACEHOLDER_IMG];
+  if (imgs.length < 2) return;
+  prod._activeIdx = ((prod._activeIdx || 0) + 1) % imgs.length;
+  const cardEl = document.querySelector(`.card[data-card-id="${productId}"]`);
+  if (!cardEl) return;
+  const imgEl = cardEl.querySelector('.imgwrap > img');
+  if (imgEl) {
+    imgEl.style.opacity = '0';
+    setTimeout(() => {
+      imgEl.src = imgs[prod._activeIdx];
+      imgEl.setAttribute('onclick', `openLightbox('${productId}', ${prod._activeIdx})`);
+      imgEl.style.opacity = '1';
+    }, 200);
+  }
+  cardEl.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === prod._activeIdx));
+}
+
+function attachGridHandlers() {
+  document.querySelectorAll('.remove-btn').forEach(btn => {
+    btn.onclick = () => {
+      pendingRemoveId = btn.getAttribute('data-id');
+      const prod = state.products.find(p => p.id === pendingRemoveId);
+      el('removeModalName').textContent = 'Remove "' + (prod ? prod.name : 'this item') + '" from the collection?';
+      el('removeModal').classList.add('show');
+    };
+  });
+  document.querySelectorAll('[data-img-edit]').forEach(btn => {
+    btn.onclick = () => {
+      pendingImgId = btn.getAttribute('data-img-edit');
+      const prod = state.products.find(p => p.id === pendingImgId);
+      el('imgModalName').textContent = 'Add, remove, or reorder photos for "' + prod.name + '".';
+      workingImages = (prod.images || []).slice();
+      renderThumbRow('editThumbRow', workingImages, removeFromWorkingImages);
+      el('imgFileInput').value = '';
+      el('imgModal').classList.add('show');
+    };
+  });
+  document.querySelectorAll('[data-carousel]').forEach(btn => {
+    btn.onclick = () => {
+      const id = btn.getAttribute('data-carousel');
+      const dir = parseInt(btn.getAttribute('data-dir'), 10);
+      const prod = state.products.find(p => p.id === id);
+      const imgs = prod.images && prod.images.length ? prod.images : [PLACEHOLDER_IMG];
+      prod._activeIdx = ((prod._activeIdx || 0) + dir - 1 + imgs.length) % imgs.length;
+      advanceCardImage(id);
+      startAutoSwipe(id);
+    };
+  });
+  document.querySelectorAll('[data-carousel-dot]').forEach(btn => {
+    btn.onclick = () => {
+      const id = btn.getAttribute('data-carousel-dot');
+      const idx = parseInt(btn.getAttribute('data-idx'), 10);
+      const prod = state.products.find(p => p.id === id);
+      prod._activeIdx = (idx - 1 + (prod.images.length || 1)) % (prod.images.length || 1);
+      advanceCardImage(id);
+      startAutoSwipe(id);
+    };
+  });
+  document.querySelectorAll('.card').forEach(cardEl => {
+    const id = cardEl.getAttribute('data-card-id');
+    cardEl.addEventListener('mouseenter', () => clearInterval(autoSwipeTimers[id]));
+    cardEl.addEventListener('mouseleave', () => {
+      const prod = state.products.find(p => p.id === id);
+      if (prod && prod.images && prod.images.length > 1) startAutoSwipe(id);
+    });
+  });
+  const openAdd = el('openAddModal');
+  if (openAdd) openAdd.onclick = () => el('addModal').classList.add('show');
+}
+
+function removeFromWorkingImages(i) {
+  workingImages.splice(i, 1);
+  renderThumbRow('editThumbRow', workingImages, removeFromWorkingImages);
+}
+
+function removeFromWorkingNewImages(i) {
+  workingNewImages.splice(i, 1);
+  renderThumbRow('newThumbRow', workingNewImages, removeFromWorkingNewImages);
+}
+
+el('cancelRemove').onclick = () => { el('removeModal').classList.remove('show'); pendingRemoveId = null; };
+el('confirmRemove').onclick = () => {
+  if (pendingRemoveId) {
+    state.products = state.products.filter(p => p.id !== pendingRemoveId);
+    pendingRemoveId = null;
+    el('removeModal').classList.remove('show');
+    render();
+    persist(true);
+  }
+};
+
+el('imgFileInput').onchange = async () => {
+  const files = Array.from(el('imgFileInput').files);
+  if (!files.length) return;
+  el('imgBoxText').textContent = 'Processing…';
+  for (const file of files) {
+    try {
+      const dataUrl = await resizeImageFile(file, 1400, 0.82);
+      workingImages.push(dataUrl);
+    } catch (e) { /* skip unreadable file */ }
+  }
+  renderThumbRow('editThumbRow', workingImages, removeFromWorkingImages);
+  el('imgBoxText').textContent = '+ Add photos';
+  el('imgFileInput').value = '';
+};
+
+el('cancelImg').onclick = () => { el('imgModal').classList.remove('show'); pendingImgId = null; workingImages = []; };
+el('submitImg').onclick = () => {
+  const prod = state.products.find(p => p.id === pendingImgId);
+  if (prod) {
+    prod.images = workingImages.slice();
+    if (prod._activeIdx >= prod.images.length) prod._activeIdx = 0;
+    el('imgModal').classList.remove('show');
+    pendingImgId = null;
+    workingImages = [];
+    render();
+    persist(true);
+  }
+};
+
+
+el('ownerToggleBtn').onclick = () => {
+  if (isOwner) {
+    isOwner = false;
+    root.classList.remove('owner-on');
+    render();
+  } else {
+    el('passInput').value = '';
+    el('passErr').style.display = 'none';
+    el('loginModal').classList.add('show');
+    el('passInput').focus();
+  }
+};
+
+el('cancelLogin').onclick = () => el('loginModal').classList.remove('show');
+
+function attemptLogin() {
+  const val = el('passInput').value;
+  if (val === ADMIN_PASSCODE) {
+    isOwner = true;
+    root.classList.add('owner-on');
+    el('loginModal').classList.remove('show');
+    render();
+  } else {
+    el('passErr').style.display = 'block';
+  }
+}
+el('submitLogin').onclick = attemptLogin;
+el('passInput').onkeydown = (e) => { if (e.key === 'Enter') attemptLogin(); };
+
+el('logoutBtn').onclick = () => {
+  isOwner = false;
+  root.classList.remove('owner-on');
+  render();
+};
+
+el('saveBtn').onclick = () => persist(true);
+
+el('newImgFile').onchange = async () => {
+  const files = Array.from(el('newImgFile').files);
+  if (!files.length) return;
+  el('newImgBoxText').textContent = '…';
+  for (const file of files) {
+    try {
+      const dataUrl = await resizeImageFile(file, 1400, 0.82);
+      workingNewImages.push(dataUrl);
+    } catch (e) { /* skip unreadable file */ }
+  }
+  renderThumbRow('newThumbRow', workingNewImages, removeFromWorkingNewImages);
+  el('newImgBoxText').textContent = '+ Add photos';
+  el('newImgFile').value = '';
+};
+
+el('cancelAdd').onclick = () => {
+  el('addModal').classList.remove('show');
+  el('addErr').style.display = 'none';
+  el('newImgFile').value = '';
+  workingNewImages = [];
+  renderThumbRow('newThumbRow', workingNewImages, removeFromWorkingNewImages);
+};
+el('submitAdd').onclick = () => {
+  const name = el('newName').value.trim();
+  const price = el('newPrice').value.trim();
+  const images = workingNewImages.slice();
+  const desc = el('newDesc').value.trim();
+  if (!name || !price) {
+    el('addErr').style.display = 'block';
+    return;
+  }
+  state.products.push({
+    id: 'p' + Date.now(),
+    name, price, images, desc: desc || 'New arrival.', _activeIdx: 0
+  });
+  el('newName').value = '';
+  el('newPrice').value = '';
+  el('newImgFile').value = '';
+  workingNewImages = [];
+  renderThumbRow('newThumbRow', workingNewImages, removeFromWorkingNewImages);
+  el('newDesc').value = '';
+  el('addErr').style.display = 'none';
+  el('addModal').classList.remove('show');
+  render();
+  persist(true);
+};
+
+let lightboxProductId = null;
+let lightboxIdx = 0;
+
+function openLightbox(productId, idx) {
+  const prod = state.products.find(p => p.id === productId);
+  const imgs = (prod && prod.images && prod.images.length) ? prod.images : [PLACEHOLDER_IMG];
+  lightboxProductId = productId;
+  lightboxIdx = Math.min(idx, imgs.length - 1);
+  renderLightbox();
+  el('lightbox').classList.add('show');
+}
+
+function renderLightbox() {
+  const prod = state.products.find(p => p.id === lightboxProductId);
+  const imgs = (prod && prod.images && prod.images.length) ? prod.images : [PLACEHOLDER_IMG];
+  el('lightboxImg').src = imgs[lightboxIdx];
+  el('lightboxCount').textContent = imgs.length > 1 ? (lightboxIdx + 1) + ' / ' + imgs.length : '';
+  const multi = imgs.length > 1;
+  el('lightboxPrev').style.display = multi ? 'flex' : 'none';
+  el('lightboxNext').style.display = multi ? 'flex' : 'none';
+}
+
+function closeLightbox() {
+  el('lightbox').classList.remove('show');
+  lightboxProductId = null;
+}
+
+el('lightboxClose').onclick = closeLightbox;
+el('lightbox').onclick = (e) => { if (e.target.id === 'lightbox') closeLightbox(); };
+el('lightboxPrev').onclick = () => {
+  const prod = state.products.find(p => p.id === lightboxProductId);
+  const imgs = (prod && prod.images && prod.images.length) ? prod.images : [PLACEHOLDER_IMG];
+  lightboxIdx = (lightboxIdx - 1 + imgs.length) % imgs.length;
+  renderLightbox();
+};
+el('lightboxNext').onclick = () => {
+  const prod = state.products.find(p => p.id === lightboxProductId);
+  const imgs = (prod && prod.images && prod.images.length) ? prod.images : [PLACEHOLDER_IMG];
+  lightboxIdx = (lightboxIdx + 1) % imgs.length;
+  renderLightbox();
+};
+document.addEventListener('keydown', (e) => {
+  if (!el('lightbox').classList.contains('show')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') el('lightboxPrev').click();
+  if (e.key === 'ArrowRight') el('lightboxNext').click();
+});
+
+loadData();
+</script>
+
+</body>
+</html>
